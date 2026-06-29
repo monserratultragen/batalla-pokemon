@@ -1,0 +1,278 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+@theme {
+  --font-nunito: 'Nunito', system-ui, sans-serif;
+}
+
+@utility pixel-font {
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-weight: 700;
+}
+
+@layer base {
+  :root {
+    --pokemon-red: #ff758f;
+    --pokemon-blue: #70d6ff;
+    --pokemon-yellow: #ffd166;
+    --pokemon-green: #06d6a0;
+    --pokemon-dark: #ffeef2;
+    --pokemon-light: #fff0f3;
+    --hp-green: #06d6a0;
+    --hp-yellow: #ffd166;
+    --hp-red: #ff758f;
+    --pixel-font: 'Nunito', system-ui, sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Nunito', system-ui, sans-serif;
+    background: #000;
+    color: #e2e8f0;
+    min-height: 100vh;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@layer components {
+  /* Redefine Gameboy frame into Wii U sleek feminine chassis */
+  .gameboy-border {
+    border: 1px solid rgba(255, 182, 193, 0.4) !important;
+    border-radius: 32px !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(15px);
+    box-shadow: 
+      0 15px 35px rgba(255, 182, 193, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+    padding: 24px;
+  }
+
+  /* Redefine Gameboy screen into smooth rounded borderless screen */
+  .gameboy-screen {
+    background: linear-gradient(135deg, #fff5f6 0%, #f0e6ff 100%) !important;
+    border: 1px solid rgba(255, 182, 193, 0.3) !important;
+    border-radius: 20px !important;
+    box-shadow: 
+      inset 0 2px 10px rgba(0, 0, 0, 0.02),
+      0 8px 24px rgba(255, 182, 193, 0.1) !important;
+  }
+
+  .hp-bar-green {
+    background: linear-gradient(90deg, #06d6a0, #2ec4b6);
+  }
+
+  .hp-bar-yellow {
+    background: linear-gradient(90deg, #ffd166, #ffb703);
+  }
+
+  .hp-bar-red {
+    background: linear-gradient(90deg, #ff758f, #ff4d6d);
+  }
+
+  .hp-bar-bg {
+    background: #f1f3f5;
+    border-radius: 9999px;
+    overflow: hidden;
+    height: 8px !important;
+  }
+
+  /* Sleek Wii U style Attack Buttons */
+  .move-button {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    padding: 12px 16px;
+    border-radius: 16px;
+    background: white;
+    border: 1px solid rgba(255, 182, 193, 0.3) !important;
+    box-shadow: 0 4px 10px rgba(255, 182, 193, 0.05);
+    color: #4a5568 !important;
+    transition: all 0.2s ease-out;
+  }
+
+  .move-button:hover:not(:disabled) {
+    background: #fff8f9 !important;
+    border-color: rgba(255, 117, 143, 0.4) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 117, 143, 0.12);
+  }
+
+  .move-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    box-shadow: none;
+    background: #f8f9fa !important;
+    border-color: #e9ecef !important;
+  }
+
+  .type-badge {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    padding: 2px 10px;
+    border-radius: 9999px !important;
+    color: white !important;
+    text-transform: uppercase;
+  }
+
+  .battle-log-entry {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: #4a5568;
+    margin-bottom: 4px;
+  }
+
+  .battle-log-entry.player {
+    color: #3b82f6;
+  }
+
+  .battle-log-entry.enemy {
+    color: #ec4899;
+  }
+
+  .battle-log-entry.system {
+    color: #8b5cf6;
+    font-style: italic;
+  }
+
+  .pokemon-sprite {
+    /* Smooth scaling, no blocky pixelated styling */
+    image-rendering: auto;
+    filter: drop-shadow(0 8px 16px rgba(255, 182, 193, 0.15));
+  }
+
+  .hp-text {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: #4b5563;
+  }
+
+  .stat-label {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: #718096;
+  }
+
+  .stat-value {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.8rem;
+    color: #2d3748;
+  }
+
+  /* Pill-shaped Wii U standard button - Rose pink gradient */
+  .btn-pixel {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 12px 28px;
+    border: none !important;
+    border-radius: 9999px !important;
+    background: linear-gradient(135deg, #ff758f 0%, #ff8fa3 100%) !important;
+    color: white !important;
+    box-shadow: 0 6px 20px rgba(255, 117, 143, 0.35) !important;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+  }
+
+  .btn-pixel:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 117, 143, 0.45) !important;
+    background: linear-gradient(135deg, #ff8fa3 0%, #ffb3c1 100%) !important;
+  }
+
+  .btn-pixel:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 0 3px 10px rgba(255, 117, 143, 0.35) !important;
+  }
+
+  .btn-pixel:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    box-shadow: none !important;
+  }
+
+  /* Pill-shaped Wii U blue button */
+  .btn-pixel-blue {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 12px 28px;
+    border: none !important;
+    border-radius: 9999px !important;
+    background: linear-gradient(135deg, #70d6ff 0%, #90e0ef 100%) !important;
+    color: white !important;
+    box-shadow: 0 6px 20px rgba(112, 214, 255, 0.3) !important;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+  }
+
+  .btn-pixel-blue:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(112, 214, 255, 0.4) !important;
+    background: linear-gradient(135deg, #90e0ef 0%, #a8dede 100%) !important;
+  }
+
+  .btn-pixel-blue:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 0 3px 10px rgba(112, 214, 255, 0.3) !important;
+  }
+
+  .shake {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+  }
+
+  .flash {
+    animation: flash 0.3s ease-out;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  @keyframes shake {
+    10%, 90% { transform: translateX(-2px); }
+    20%, 80% { transform: translateX(4px); }
+    30%, 50%, 70% { transform: translateX(-8px); }
+    40%, 60% { transform: translateX(8px); }
+    0%, 100% { transform: translateX(0); }
+  }
+
+  @keyframes flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@utility text-shadow {
+  text-shadow: 0 2px 4px rgba(255, 117, 143, 0.2);
+}
+
+@utility text-shadow-white {
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}

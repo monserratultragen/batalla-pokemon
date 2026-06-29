@@ -327,13 +327,13 @@ function BattleScreen({ playerPokemon, onFinish }: { playerPokemon: Pokemon; onF
               {winner === 'player' ? (
                 <div className="text-center space-y-6" style={{ animation: 'fadeIn 0.5s ease-out' }}>
                   <h2 className="text-2xl font-bold text-center" style={{ color: '#06d6a0', fontFamily: 'Nunito, sans-serif' }}>
-                    ¡Felicidades! ¡Venciste a Monserrat!
+                    ¡Felicidades! ¡Me venciste!
                   </h2>
                   <div className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-500 bg-clip-text text-transparent font-bold text-2xl sm:text-3xl font-mono tracking-wider animate-pulse">
                     R2D2 tiene un secreto
                   </div>
-                  <p className="text-sm sm:text-base text-center max-w-xs" style={{ color: '#ffb3c6', fontFamily: 'Nunito, sans-serif', lineHeight: 1.6 }}>
-                    ¡Escribe esta palabra clave directamente para canjear tu premio!
+                  <p className="text-sm sm:text-base text-center w-full" style={{ color: '#ffb3c6', fontFamily: 'Nunito, sans-serif', lineHeight: 1.6 }}>
+                    ¡Escríbeme con esta palabra clave para canjear tu premio!
                   </p>
                 </div>
               ) : (

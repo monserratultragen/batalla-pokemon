@@ -34,17 +34,17 @@ function IntroScreen({ onFinish }: { onFinish: () => void }) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-6 w-full" style={{ background: '#000' }}>
-      <div className="w-full max-w-2xl rounded-3xl relative flex flex-col items-center overflow-hidden" style={{ background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,182,193,0.15)', boxShadow: '0 25px 60px rgba(0,0,0,0.6)' }}>
+    <div className="flex flex-col items-center justify-center min-h-screen p-3 sm:p-6 w-full" style={{ background: '#000' }}>
+      <div className="w-full max-w-2xl rounded-2xl sm:rounded-3xl relative flex flex-col items-center overflow-hidden" style={{ background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,182,193,0.15)', boxShadow: '0 25px 60px rgba(0,0,0,0.6)' }}>
 
         {/* Header */}
-        <div className="w-full px-8 pt-8 pb-4 flex items-center gap-3">
+        <div className="w-full px-4 sm:px-8 pt-5 sm:pt-8 pb-3 sm:pb-4 flex items-center gap-3">
           <div className="w-2 h-2 rounded-full" style={{ background: '#ff758f' }} />
-          <h1 className="text-sm font-bold tracking-widest uppercase" style={{ color: 'rgba(255,182,193,0.7)', fontFamily: 'Nunito, sans-serif' }}>Retadora</h1>
+          <h1 className="text-xs sm:text-sm font-bold tracking-widest uppercase" style={{ color: 'rgba(255,182,193,0.7)', fontFamily: 'Nunito, sans-serif' }}>Retadora</h1>
         </div>
 
         {/* Cinematic Area */}
-        <div className="w-full flex flex-col md:flex-row items-center gap-6 px-8 pb-6 flex-1 justify-center">
+        <div className="w-full flex flex-col md:flex-row items-center gap-4 sm:gap-6 px-4 sm:px-8 pb-5 sm:pb-6 flex-1 justify-center">
 
           {/* Trainer Face - elegant circular frame */}
           <div className="flex flex-col items-center shrink-0">
@@ -52,19 +52,19 @@ function IntroScreen({ onFinish }: { onFinish: () => void }) {
               <img
                 src={entrenadoraFace}
                 alt="Rostro Entrenadora Monserrat"
-                className="w-32 h-32 object-cover rounded-full"
+                className="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-full"
                 style={{ display: 'block' }}
               />
             </div>
-            <span className="mt-3 text-xs font-bold tracking-wide" style={{ color: '#ffb3c6', fontFamily: 'Nunito, sans-serif' }}>Monserrat</span>
+            <span className="mt-2 sm:mt-3 text-[10px] sm:text-xs font-bold tracking-wide" style={{ color: '#ffb3c6', fontFamily: 'Nunito, sans-serif' }}>Monserrat</span>
           </div>
 
           {/* Dialog Box */}
-          <div className="flex-1 p-5 rounded-2xl flex flex-col justify-between" style={{ background: 'rgba(255,240,245,0.08)', border: '1px solid rgba(255,182,193,0.15)' }}>
-            <p className="text-sm leading-relaxed" style={{ color: '#ffb3c6', fontFamily: 'Nunito, sans-serif', fontWeight: 600 }}>
+          <div className="flex-1 p-3 sm:p-5 rounded-xl sm:rounded-2xl flex flex-col justify-between" style={{ background: 'rgba(255,240,245,0.08)', border: '1px solid rgba(255,182,193,0.15)' }}>
+            <p className="text-xs sm:text-sm leading-relaxed" style={{ color: '#ffb3c6', fontFamily: 'Nunito, sans-serif', fontWeight: 600 }}>
               {dialogs[introStep].text}
             </p>
-            <div className="flex justify-end mt-6">
+            <div className="flex justify-end mt-4 sm:mt-6">
               <button
                 onClick={handleNext}
                 className="btn-pixel"
@@ -89,27 +89,27 @@ function SelectionScreen({ onSelect }: { onSelect: (p: Pokemon) => void }) {
   }, [availableOptions.length, reroll]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4 w-full" style={{ background: '#000' }}>
-      <h1 className="pixel-font text-2xl text-yellow-400 mb-8 text-shadow text-center font-bold">
+    <div className="flex flex-col items-center justify-center min-h-screen p-3 sm:p-4 w-full" style={{ background: '#000' }}>
+      <h1 className="pixel-font text-lg sm:text-2xl text-yellow-400 mb-5 sm:mb-8 text-shadow text-center font-bold">
         ¡SELECCIONA TU POKÉMON!
       </h1>
 
-      <div className="flex flex-wrap justify-center gap-6 mb-10">
+      <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-6 sm:mb-10">
         {availableOptions.map(p => (
           <div
             key={p.id}
             onClick={() => selectPokemon(p)}
-            className={`cursor-pointer p-6 rounded-xl gameboy-border transition-transform w-64 ${selectedPokemon?.id === p.id ? 'scale-110 ring-4 ring-yellow-400 bg-gray-100' : 'hover:scale-105 bg-gray-200'}`}
+            className={`cursor-pointer p-4 sm:p-6 rounded-xl gameboy-border transition-transform w-full max-w-[200px] sm:w-64 ${selectedPokemon?.id === p.id ? 'scale-105 sm:scale-110 ring-4 ring-yellow-400 bg-gray-100' : 'hover:scale-105 bg-gray-200'}`}
           >
             {/* Show Pokémon facing front during selection */}
-            <div className="flex justify-center mb-4 h-32 items-end">
+            <div className="flex justify-center mb-3 sm:mb-4 h-24 sm:h-32 items-end">
               <PokemonSprite pokemon={p} side="enemy" />
             </div>
-            <div className="text-center mt-2 pixel-font text-base text-gray-900 uppercase font-bold">{p.name}</div>
-            <div className="flex justify-center gap-2 mt-3">
+            <div className="text-center mt-2 pixel-font text-sm sm:text-base text-gray-900 uppercase font-bold">{p.name}</div>
+            <div className="flex justify-center gap-1.5 sm:gap-2 mt-2 sm:mt-3">
               {p.types.map(t => <TypeBadge key={t} type={t} />)}
             </div>
-            <div className="mt-4 text-gray-800">
+            <div className="mt-3 sm:mt-4 text-gray-800">
               <StatPreview stats={p.baseStats} />
             </div>
           </div>
@@ -158,38 +158,38 @@ function PreludeScreen({ playerPokemon: _playerPokemon, onFinish }: { playerPoke
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-6 w-full" style={{ background: '#000' }}>
-      <div className="w-full max-w-2xl rounded-3xl relative flex flex-col items-center overflow-hidden" style={{ background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,182,193,0.15)', boxShadow: '0 25px 60px rgba(0,0,0,0.6)' }}>
+    <div className="flex flex-col items-center justify-center min-h-screen p-3 sm:p-6 w-full" style={{ background: '#000' }}>
+      <div className="w-full max-w-2xl rounded-2xl sm:rounded-3xl relative flex flex-col items-center overflow-hidden" style={{ background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,182,193,0.15)', boxShadow: '0 25px 60px rgba(0,0,0,0.6)' }}>
         
         {/* Header */}
-        <div className="w-full px-8 pt-8 pb-4 flex items-center gap-3">
+        <div className="w-full px-4 sm:px-8 pt-5 sm:pt-8 pb-3 sm:pb-4 flex items-center gap-3">
           <div className="w-2 h-2 rounded-full" style={{ background: '#ff758f' }} />
-          <h1 className="text-sm font-bold tracking-widest uppercase" style={{ color: 'rgba(255,182,193,0.7)', fontFamily: 'Nunito, sans-serif' }}>Antesala del Combate</h1>
+          <h1 className="text-xs sm:text-sm font-bold tracking-widest uppercase" style={{ color: 'rgba(255,182,193,0.7)', fontFamily: 'Nunito, sans-serif' }}>Antesala del Combate</h1>
         </div>
 
         {/* Visual Arena - Full body sliding from Left, Gengar on Right */}
-        <div className="relative w-full h-80 overflow-hidden flex items-end justify-between px-6 pb-2" style={{ background: 'linear-gradient(180deg, #0a0015 0%, #1a0030 60%, #0d001f 100%)' }}>
+        <div className="relative w-full h-48 sm:h-64 md:h-80 overflow-hidden flex items-end justify-between px-3 sm:px-6 pb-2" style={{ background: 'linear-gradient(180deg, #0a0015 0%, #1a0030 60%, #0d001f 100%)' }}>
           
           {/* Trainer Monserrat - slides from left */}
           <div className={`transition-all duration-1000 ease-out transform ${isMounted ? 'translate-x-0' : '-translate-x-full'} flex justify-center items-end h-full`}>
             <img 
               src={entrenadoraFull} 
               alt="Entrenadora Monserrat" 
-              className="h-[290px] object-contain"
+              className="h-[180px] sm:h-[240px] md:h-[290px] object-contain"
               style={{ filter: 'drop-shadow(0 0 20px rgba(255,117,143,0.3))' }}
             />
           </div>
 
           {/* Gengar Sprite */}
           {dialogs[step].showGengar && (
-            <div className="flex flex-col items-center mr-10 justify-end h-full pb-10">
+            <div className="flex flex-col items-center mr-4 sm:mr-10 justify-end h-full pb-6 sm:pb-10">
               <img 
                 src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png" 
                 alt="Gengar" 
-                className="w-36 h-36 pokemon-sprite"
+                className="w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 pokemon-sprite"
                 style={{ filter: 'drop-shadow(0 0 20px rgba(180,100,255,0.6))' }}
               />
-              <span className="mt-2 text-xs font-bold" style={{ color: '#c77dff', fontFamily: 'Nunito, sans-serif', background: 'rgba(0,0,0,0.5)', padding: '2px 10px', borderRadius: '9999px' }}>
+              <span className="mt-1 sm:mt-2 text-[10px] sm:text-xs font-bold" style={{ color: '#c77dff', fontFamily: 'Nunito, sans-serif', background: 'rgba(0,0,0,0.5)', padding: '2px 8px', borderRadius: '9999px' }}>
                 Gengar Nv.50
               </span>
             </div>
@@ -197,11 +197,11 @@ function PreludeScreen({ playerPokemon: _playerPokemon, onFinish }: { playerPoke
         </div>
 
         {/* Dialog Box */}
-        <div className="w-full p-6 flex flex-col justify-between" style={{ background: 'rgba(255,240,245,0.06)', borderTop: '1px solid rgba(255,182,193,0.1)' }}>
-          <p className="text-sm leading-relaxed" style={{ color: '#ffb3c6', fontFamily: 'Nunito, sans-serif', fontWeight: 600 }}>
+        <div className="w-full p-4 sm:p-6 flex flex-col justify-between" style={{ background: 'rgba(255,240,245,0.06)', borderTop: '1px solid rgba(255,182,193,0.1)' }}>
+          <p className="text-xs sm:text-sm leading-relaxed" style={{ color: '#ffb3c6', fontFamily: 'Nunito, sans-serif', fontWeight: 600 }}>
             {dialogs[step].text}
           </p>
-          <div className="flex justify-end mt-5">
+          <div className="flex justify-end mt-4 sm:mt-5">
             <button 
               onClick={handleNext} 
               className="btn-pixel"
@@ -251,25 +251,25 @@ function BattleScreen({ playerPokemon, onFinish }: { playerPokemon: Pokemon; onF
     (currentEvent.message?.includes('Gengar') || currentEvent.message?.includes('Monserrat') || currentEvent.target === 'player');
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4 w-full" style={{ background: '#000' }}>
-      <div className="w-full max-w-3xl rounded-3xl overflow-hidden relative" style={{ boxShadow: '0 30px 80px rgba(0,0,0,0.8)', border: '1px solid rgba(255,182,193,0.15)' }}>
+    <div className="flex flex-col items-center justify-center min-h-screen p-2 sm:p-4 w-full" style={{ background: '#000' }}>
+      <div className="w-full max-w-3xl rounded-2xl sm:rounded-3xl overflow-hidden relative" style={{ boxShadow: '0 30px 80px rgba(0,0,0,0.8)', border: '1px solid rgba(255,182,193,0.15)' }}>
 
         {/* Top notification log */}
         {currentEvent && (currentEvent.type === 'message' || currentEvent.type === 'damage') && (
-          <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-11/12 bg-pink-100/95 border-none p-3 rounded-xl shadow-lg z-50 flex items-center gap-3">
+          <div className="absolute top-2 sm:top-4 left-1/2 transform -translate-x-1/2 w-11/12 bg-pink-100/95 border-none p-2 sm:p-3 rounded-lg sm:rounded-xl shadow-lg z-50 flex items-center gap-2 sm:gap-3">
             {showMonserratFace && (
               <img
                 src={entrenadoraFace}
                 alt="Monserrat"
-                className="w-10 h-10 rounded-full border-2 border-rose-950 object-cover bg-rose-200 shrink-0"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-rose-950 object-cover bg-rose-200 shrink-0"
               />
             )}
-            <p className="pixel-font text-xs text-rose-950 leading-relaxed flex-1 font-bold">
+            <p className="pixel-font text-[9px] sm:text-xs text-rose-950 leading-relaxed flex-1 font-bold">
               {currentEvent.message || (currentEvent.type === 'damage' ? `¡${currentEvent.target === 'player' ? player.pokemon.name : enemy.pokemon.name} recibió ${currentEvent.damage} de daño!` : '')}
             </p>
             <button
               onClick={nextEvent}
-              className="px-3 py-1 bg-rose-800 text-white rounded font-bold hover:bg-rose-700 active:bg-rose-900 pixel-font text-[10px]"
+              className="px-2 sm:px-3 py-1 bg-rose-800 text-white rounded font-bold hover:bg-rose-700 active:bg-rose-900 pixel-font text-[8px] sm:text-[10px]"
             >
               SIGUIENTE
             </button>
@@ -277,42 +277,42 @@ function BattleScreen({ playerPokemon, onFinish }: { playerPokemon: Pokemon; onF
         )}
 
         {/* ARENA - Stormy night battlefield */}
-        <div className="relative h-96 p-4" style={{ backgroundImage: `url(${battleBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="relative h-56 sm:h-72 md:h-96 p-2 sm:p-4" style={{ backgroundImage: `url(${battleBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
 
           {/* ENEMY SIDE - includes Monserrat face next to Gengar's bar */}
-          <div className="absolute top-6 left-6 w-56 flex gap-2">
+          <div className="absolute top-3 left-3 sm:top-6 sm:left-6 w-32 sm:w-44 md:w-56 flex gap-1.5 sm:gap-2">
             <img
               src={entrenadoraFace}
               alt="Monserrat Face"
-              className="w-12 h-12 rounded-full border-2 object-cover shrink-0"
+              className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full border-2 object-cover shrink-0"
               style={{ borderColor: '#ff758f', background: 'rgba(255,182,193,0.15)' }}
             />
-            <div className="gameboy-screen p-2 flex-1">
-              <div className="flex flex-col mb-1 text-left">
-                <span className="pixel-font text-[10px] font-bold" style={{ color: '#3b82f6' }}>Monserrat</span>
+            <div className="gameboy-screen p-1.5 sm:p-2 flex-1">
+              <div className="flex flex-col mb-0.5 sm:mb-1 text-left">
+                <span className="pixel-font text-[8px] sm:text-[9px] md:text-[10px] font-bold" style={{ color: '#3b82f6' }}>Monserrat</span>
                 <div className="flex justify-between items-center mt-0.5">
-                  <span className="pixel-font text-[10px] text-gray-800 uppercase font-bold">{enemy.pokemon.name}</span>
-                  <span className="pixel-font text-[9px] text-gray-500">Nv.50</span>
+                  <span className="pixel-font text-[8px] sm:text-[9px] md:text-[10px] text-gray-800 uppercase font-bold">{enemy.pokemon.name}</span>
+                  <span className="pixel-font text-[7px] sm:text-[8px] md:text-[9px] text-gray-500">Nv.50</span>
                 </div>
               </div>
               <HPBar combatant={enemy} />
             </div>
           </div>
-          <div className="absolute top-10 right-16">
+          <div className="absolute top-8 sm:top-10 right-4 sm:right-10 md:right-16">
             <PokemonSprite pokemon={enemy.pokemon} side="enemy" animate={enemyAnimation} />
           </div>
 
           {/* PLAYER SIDE */}
-          <div className="absolute bottom-6 left-16">
+          <div className="absolute bottom-3 left-4 sm:bottom-6 sm:left-10 md:left-16">
             <PokemonSprite pokemon={player.pokemon} side="player" animate={playerAnimation} />
           </div>
-          <div className="absolute bottom-6 right-6 w-56">
-            <div className="gameboy-screen p-2">
-              <div className="flex flex-col mb-1 text-left">
-                <span className="pixel-font text-[10px] font-bold" style={{ color: '#3b82f6' }}>Usuario</span>
+          <div className="absolute bottom-3 right-3 sm:bottom-6 sm:right-6 w-32 sm:w-44 md:w-56">
+            <div className="gameboy-screen p-1.5 sm:p-2">
+              <div className="flex flex-col mb-0.5 sm:mb-1 text-left">
+                <span className="pixel-font text-[8px] sm:text-[9px] md:text-[10px] font-bold" style={{ color: '#3b82f6' }}>Usuario</span>
                 <div className="flex justify-between items-center mt-0.5">
-                  <span className="pixel-font text-[10px] text-gray-800 uppercase font-bold">{player.pokemon.name}</span>
-                  <span className="pixel-font text-[9px] text-gray-500">Nv.50</span>
+                  <span className="pixel-font text-[8px] sm:text-[9px] md:text-[10px] text-gray-800 uppercase font-bold">{player.pokemon.name}</span>
+                  <span className="pixel-font text-[7px] sm:text-[8px] md:text-[9px] text-gray-500">Nv.50</span>
                 </div>
               </div>
               <HPBar combatant={player} />
@@ -322,50 +322,50 @@ function BattleScreen({ playerPokemon, onFinish }: { playerPokemon: Pokemon; onF
         </div>
 
         {/* CONTROLS & LOG PANEL */}
-        <div className="p-4 h-56 flex flex-col" style={{ background: 'linear-gradient(135deg, #fff5f6 0%, #f0e6ff 100%)', borderTop: '1px solid rgba(255,182,193,0.3)' }}>
+        <div className="p-3 sm:p-4 h-44 sm:h-48 md:h-56 flex flex-col" style={{ background: 'linear-gradient(135deg, #fff5f6 0%, #f0e6ff 100%)', borderTop: '1px solid rgba(255,182,193,0.3)' }}>
           {phase === 'ended' && winner ? (
             <div className="flex-1 flex flex-col items-center justify-center">
               {winner === 'player' ? (
-                <div className="text-center space-y-3">
-                  <h2 className="text-lg font-bold" style={{ color: '#06d6a0', fontFamily: 'Nunito, sans-serif' }}>
+                <div className="text-center space-y-2 sm:space-y-3">
+                  <h2 className="text-base sm:text-lg font-bold" style={{ color: '#06d6a0', fontFamily: 'Nunito, sans-serif' }}>
                     ¡Felicidades! ¡Me venciste!
                   </h2>
-                  <div className="flex items-center justify-center gap-2">
-                    <div className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-500 bg-clip-text text-transparent font-bold text-xl font-mono tracking-wider animate-pulse">
+                  <div className="flex items-center justify-center gap-1.5 sm:gap-2">
+                    <div className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-500 bg-clip-text text-transparent font-bold text-sm sm:text-xl font-mono tracking-wider animate-pulse">
                       R2D2 tiene un secreto
                     </div>
                     <button
                       onClick={() => navigator.clipboard.writeText('R2D2 tiene un secreto')}
-                      className="p-1.5 rounded-lg transition-all hover:scale-110 active:scale-95"
+                      className="p-1 sm:p-1.5 rounded-lg transition-all hover:scale-110 active:scale-95"
                       style={{ background: 'rgba(255,182,193,0.2)', border: '1px solid rgba(255,182,193,0.3)' }}
                       title="Copiar al portapapeles"
                     >
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#ff758f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#ff758f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
                         <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
                       </svg>
                     </button>
                   </div>
-                  <p className="text-xs font-semibold" style={{ color: '#c77dff', fontFamily: 'Nunito, sans-serif' }}>
+                  <p className="text-[10px] sm:text-xs font-semibold" style={{ color: '#c77dff', fontFamily: 'Nunito, sans-serif' }}>
                     ¡Escríbeme con esta palabra clave para canjear tu premio!
                   </p>
                 </div>
               ) : (
                 <div className="text-center">
-                  <h2 className="text-lg font-bold" style={{ color: '#ff758f', fontFamily: 'Nunito, sans-serif' }}>
+                  <h2 className="text-base sm:text-lg font-bold" style={{ color: '#ff758f', fontFamily: 'Nunito, sans-serif' }}>
                     ¡Monserrat te ha derrotado!
                   </h2>
                 </div>
               )}
-              <div className="flex gap-3 mt-4">
+              <div className="flex gap-2 sm:gap-3 mt-3 sm:mt-4">
                 <button onClick={() => resetBattle(playerPokemon)} className="btn-pixel-blue">Reintentar</button>
                 <button onClick={onFinish} className="btn-pixel">Volver</button>
               </div>
             </div>
           ) : (
             <div className="flex flex-col h-full justify-between">
-              <div className="text-xs font-bold mb-2" style={{ color: '#ff758f', fontFamily: 'Nunito, sans-serif', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Elige un movimiento:</div>
-              <div className="grid grid-cols-2 gap-3 flex-1">
+              <div className="text-[10px] sm:text-xs font-bold mb-1.5 sm:mb-2" style={{ color: '#ff758f', fontFamily: 'Nunito, sans-serif', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Elige un movimiento:</div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 flex-1">
                 {player.moves.map(move => (
                   <MoveButton
                     key={move.id}

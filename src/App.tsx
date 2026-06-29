@@ -284,14 +284,15 @@ function BattleScreen({ playerPokemon, onFinish }: { playerPokemon: Pokemon; onF
             <img
               src={entrenadoraFace}
               alt="Monserrat Face"
-              className="w-12 h-12 rounded-full border-2 border-gray-800 object-cover bg-rose-200 shrink-0"
+              className="w-12 h-12 rounded-full border-2 object-cover shrink-0"
+              style={{ borderColor: '#ff758f', background: 'rgba(255,182,193,0.15)' }}
             />
-            <div className="bg-white p-2 rounded-lg border-2 border-gray-800 shadow flex-1">
+            <div className="gameboy-screen p-2 flex-1">
               <div className="flex flex-col mb-1 text-left">
-                <span className="pixel-font text-[9px] text-rose-850 font-bold">Monserrat</span>
+                <span className="pixel-font text-[10px] font-bold" style={{ color: '#3b82f6' }}>Monserrat</span>
                 <div className="flex justify-between items-center mt-0.5">
                   <span className="pixel-font text-[10px] text-gray-800 uppercase font-bold">{enemy.pokemon.name}</span>
-                  <span className="pixel-font text-[9px] text-gray-600">Nv.50</span>
+                  <span className="pixel-font text-[9px] text-gray-500">Nv.50</span>
                 </div>
               </div>
               <HPBar combatant={enemy} />
@@ -306,12 +307,12 @@ function BattleScreen({ playerPokemon, onFinish }: { playerPokemon: Pokemon; onF
             <PokemonSprite pokemon={player.pokemon} side="player" animate={playerAnimation} />
           </div>
           <div className="absolute bottom-6 right-6 w-56">
-            <div className="bg-white p-2 rounded-lg border-2 border-gray-800 shadow">
+            <div className="gameboy-screen p-2">
               <div className="flex flex-col mb-1 text-left">
-                <span className="pixel-font text-[9px] text-blue-700 font-bold">Usuario</span>
+                <span className="pixel-font text-[10px] font-bold" style={{ color: '#3b82f6' }}>Usuario</span>
                 <div className="flex justify-between items-center mt-0.5">
                   <span className="pixel-font text-[10px] text-gray-800 uppercase font-bold">{player.pokemon.name}</span>
-                  <span className="pixel-font text-[9px] text-gray-600">Nv.50</span>
+                  <span className="pixel-font text-[9px] text-gray-500">Nv.50</span>
                 </div>
               </div>
               <HPBar combatant={player} />
@@ -321,7 +322,7 @@ function BattleScreen({ playerPokemon, onFinish }: { playerPokemon: Pokemon; onF
         </div>
 
         {/* CONTROLS & LOG PANEL */}
-        <div className="p-5 h-56 flex flex-col" style={{ background: 'rgba(255,255,255,0.06)', borderTop: '1px solid rgba(255,182,193,0.1)' }}>
+        <div className="p-5 h-56 flex flex-col" style={{ background: 'linear-gradient(135deg, #fff5f6 0%, #f0e6ff 100%)', borderTop: '1px solid rgba(255,182,193,0.3)' }}>
           {phase === 'ended' && winner ? (
             <div className="flex-1 flex flex-col items-center justify-center p-6">
               {winner === 'player' ? (
@@ -350,7 +351,7 @@ function BattleScreen({ playerPokemon, onFinish }: { playerPokemon: Pokemon; onF
             </div>
           ) : (
             <div className="flex flex-col h-full justify-between">
-              <div className="text-xs font-bold mb-2" style={{ color: 'rgba(255,182,193,0.5)', fontFamily: 'Nunito, sans-serif', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Elige un movimiento:</div>
+              <div className="text-xs font-bold mb-2" style={{ color: '#ff758f', fontFamily: 'Nunito, sans-serif', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Elige un movimiento:</div>
               <div className="grid grid-cols-2 gap-3 flex-1">
                 {player.moves.map(move => (
                   <MoveButton

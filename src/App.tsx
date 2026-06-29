@@ -322,29 +322,29 @@ function BattleScreen({ playerPokemon, onFinish }: { playerPokemon: Pokemon; onF
         </div>
 
         {/* CONTROLS & LOG PANEL */}
-        <div className="p-5 h-56 flex flex-col" style={{ background: 'linear-gradient(135deg, #fff5f6 0%, #f0e6ff 100%)', borderTop: '1px solid rgba(255,182,193,0.3)' }}>
+        <div className="p-4 h-56 flex flex-col" style={{ background: 'linear-gradient(135deg, #fff5f6 0%, #f0e6ff 100%)', borderTop: '1px solid rgba(255,182,193,0.3)' }}>
           {phase === 'ended' && winner ? (
-            <div className="flex-1 flex flex-col items-center justify-center p-6">
+            <div className="flex-1 flex flex-col items-center justify-center">
               {winner === 'player' ? (
-                <div className="text-center space-y-6" style={{ animation: 'fadeIn 0.5s ease-out' }}>
-                  <h2 className="text-2xl font-bold text-center" style={{ color: '#06d6a0', fontFamily: 'Nunito, sans-serif' }}>
+                <div className="text-center space-y-3">
+                  <h2 className="text-lg font-bold" style={{ color: '#06d6a0', fontFamily: 'Nunito, sans-serif' }}>
                     ¡Felicidades! ¡Me venciste!
                   </h2>
-                  <div className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-500 bg-clip-text text-transparent font-bold text-2xl sm:text-3xl font-mono tracking-wider animate-pulse">
+                  <div className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-500 bg-clip-text text-transparent font-bold text-xl font-mono tracking-wider animate-pulse">
                     R2D2 tiene un secreto
                   </div>
-                  <p className="text-sm sm:text-base text-center w-full" style={{ color: '#ffb3c6', fontFamily: 'Nunito, sans-serif', lineHeight: 1.6 }}>
+                  <p className="text-xs" style={{ color: '#ffb3c6', fontFamily: 'Nunito, sans-serif' }}>
                     ¡Escríbeme con esta palabra clave para canjear tu premio!
                   </p>
                 </div>
               ) : (
                 <div className="text-center">
-                  <h2 className="text-xl font-bold mb-6 text-center" style={{ color: '#ff758f', fontFamily: 'Nunito, sans-serif' }}>
+                  <h2 className="text-lg font-bold" style={{ color: '#ff758f', fontFamily: 'Nunito, sans-serif' }}>
                     ¡Monserrat te ha derrotado!
                   </h2>
                 </div>
               )}
-              <div className="flex gap-4 mt-8">
+              <div className="flex gap-3 mt-4">
                 <button onClick={() => resetBattle(playerPokemon)} className="btn-pixel-blue">Reintentar</button>
                 <button onClick={onFinish} className="btn-pixel">Volver</button>
               </div>

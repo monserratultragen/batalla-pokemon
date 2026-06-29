@@ -1,4 +1,4 @@
-import type { Combatant, Move, Pokemon } from '../types';
+import type { Combatant, Move } from '../types';
 import { TYPE_EFFECTIVENESS, STAB_MULTIPLIER, RNG_RANGE } from '../data/constants';
 import { SeededRNG } from './rng';
 

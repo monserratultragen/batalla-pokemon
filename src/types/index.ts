@@ -7,7 +7,7 @@ export interface Move {
   pp: number;
   maxPP: number;
   category: 'physical' | 'special' | 'status';
-  effect?: 'heal' | 'status' | 'stat';
+  effect?: 'heal' | 'status' | 'stat' | 'counter';
   effectChance?: number;
 }
 
@@ -43,7 +43,7 @@ export interface Combatant {
 
 export type BattlePhase = 'selecting' | 'battling' | 'ended';
 
-export type CombatantSide = 'player' | 'enemy';
+export type CombatantSide = 'player' | 'enemy' | 'system';
 
 export interface BattleLogEntry {
   turn: number;

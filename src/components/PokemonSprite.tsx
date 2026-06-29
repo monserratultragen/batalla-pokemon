@@ -3,7 +3,7 @@ import type { Pokemon, CombatantSide } from '../types';
 interface PokemonSpriteProps {
   pokemon: Pokemon;
   side: CombatantSide;
-  animate?: 'idle' | 'hit' | 'faint';
+  animate?: 'idle' | 'hit' | 'faint' | 'shake' | 'flash';
 }
 
 export function PokemonSprite({ pokemon, side, animate }: PokemonSpriteProps) {

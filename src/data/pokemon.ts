@@ -1,4 +1,4 @@
-import type { Pokemon, Combatant } from '../types';
+import type { Pokemon, Combatant, Move } from '../types';
 import { getMoveById } from './moves';
 
 export const POKEMON_POOL: Pokemon[] = [
@@ -106,7 +106,7 @@ export function getPokemonById(id: string): Pokemon | undefined {
   return POKEMON_POOL.find(p => p.id === id);
 }
 
-export function createCombatant(pokemon: Pokemon, isBoss = false): Combatant {
+export function createCombatant(pokemon: Pokemon, _isBoss = false): Combatant {
   const selectedMoves = [...pokemon.movePool]
     .sort(() => Math.random() - 0.5)
     .slice(0, 4)

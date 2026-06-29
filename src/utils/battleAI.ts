@@ -1,5 +1,5 @@
 import type { Combatant, Move } from '../types';
-import { calculateDamage, checkAccuracy, getTypeEffectiveness } from './battleMath';
+import { calculateDamage, checkAccuracy } from './battleMath';
 import { SeededRNG } from './rng';
 
 export function selectEnemyMove(enemy: Combatant, player: Combatant, rng: SeededRNG): Move {

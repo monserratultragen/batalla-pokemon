@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from 'react';
-import type { Pokemon, Combatant, Move } from '../types';
+import type { Pokemon, Combatant } from '../types';
 import { createCombatant, getPokemonById, BOSS_GENGAR } from '../data/pokemon';
 import { calculateDamage, checkAccuracy, getTypeEffectiveness, determineTurnOrder } from '../utils/battleMath';
 import { selectEnemyMove } from '../utils/battleAI';
@@ -30,8 +30,8 @@ export function useBattle({ initialPlayerPokemon }: UseBattleOptions) {
   const [eventQueue, setEventQueue] = useState<BattleEvent[]>([]);
   const [currentEvent, setCurrentEvent] = useState<BattleEvent | null>(null);
 
-  const [playerAnimation, setPlayerAnimation] = useState<'idle' | 'hit' | 'faint'>('idle');
-  const [enemyAnimation, setEnemyAnimation] = useState<'idle' | 'hit' | 'faint'>('idle');
+  const [playerAnimation, setPlayerAnimation] = useState<'idle' | 'hit' | 'faint' | 'shake' | 'flash'>('idle');
+  const [enemyAnimation, setEnemyAnimation] = useState<'idle' | 'hit' | 'faint' | 'shake' | 'flash'>('idle');
 
   const [phase, setPhase] = useState<'battling' | 'ended'>('battling');
   const [winner, setWinner] = useState<'player' | 'enemy' | null>(null);

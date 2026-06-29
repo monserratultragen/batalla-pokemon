@@ -129,7 +129,7 @@ function SelectionScreen({ onSelect }: { onSelect: (p: Pokemon) => void }) {
   );
 }
 
-function PreludeScreen({ playerPokemon, onFinish }: { playerPokemon: Pokemon; onFinish: () => void }) {
+function PreludeScreen({ playerPokemon: _playerPokemon, onFinish }: { playerPokemon: Pokemon; onFinish: () => void }) {
   const [step, setStep] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
 

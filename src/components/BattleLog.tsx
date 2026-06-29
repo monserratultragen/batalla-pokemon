@@ -1,4 +1,4 @@
-import type { BattleLogEntry, CombatantSide } from '../types';
+import type { BattleLogEntry } from '../types';
 
 interface BattleLogProps {
   entries: BattleLogEntry[];

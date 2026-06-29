@@ -330,10 +330,23 @@ function BattleScreen({ playerPokemon, onFinish }: { playerPokemon: Pokemon; onF
                   <h2 className="text-lg font-bold" style={{ color: '#06d6a0', fontFamily: 'Nunito, sans-serif' }}>
                     ¡Felicidades! ¡Me venciste!
                   </h2>
-                  <div className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-500 bg-clip-text text-transparent font-bold text-xl font-mono tracking-wider animate-pulse">
-                    R2D2 tiene un secreto
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-500 bg-clip-text text-transparent font-bold text-xl font-mono tracking-wider animate-pulse">
+                      R2D2 tiene un secreto
+                    </div>
+                    <button
+                      onClick={() => navigator.clipboard.writeText('R2D2 tiene un secreto')}
+                      className="p-1.5 rounded-lg transition-all hover:scale-110 active:scale-95"
+                      style={{ background: 'rgba(255,182,193,0.2)', border: '1px solid rgba(255,182,193,0.3)' }}
+                      title="Copiar al portapapeles"
+                    >
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#ff758f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                      </svg>
+                    </button>
                   </div>
-                  <p className="text-xs" style={{ color: '#ffb3c6', fontFamily: 'Nunito, sans-serif' }}>
+                  <p className="text-xs font-semibold" style={{ color: '#c77dff', fontFamily: 'Nunito, sans-serif' }}>
                     ¡Escríbeme con esta palabra clave para canjear tu premio!
                   </p>
                 </div>

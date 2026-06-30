@@ -49,6 +49,10 @@ export const MOVE_POOL: Move[] = [
   { id: 'minimize', name: 'Minimizar', type: 'Normal', power: 0, accuracy: 100, pp: 10, maxPP: 10, category: 'status', effect: 'stat' },
   { id: 'meditate', name: 'Meditación', type: 'Psychic', power: 0, accuracy: 100, pp: 20, maxPP: 20, category: 'status', effect: 'stat' },
   { id: 'swordsDance', name: 'Danza Espadas', type: 'Normal', power: 0, accuracy: 100, pp: 20, maxPP: 20, category: 'status', effect: 'stat' },
+  { id: 'bite', name: 'Mordisco', type: 'Normal', power: 60, accuracy: 100, pp: 25, maxPP: 25, category: 'physical' },
+  { id: 'tackle', name: 'Placaje', type: 'Normal', power: 35, accuracy: 95, pp: 35, maxPP: 35, category: 'physical' },
+  { id: 'sludge', name: 'Lodo', type: 'Poison', power: 65, accuracy: 100, pp: 20, maxPP: 20, category: 'special' },
+  { id: 'hornAttack', name: 'Cornada', type: 'Normal', power: 65, accuracy: 100, pp: 25, maxPP: 25, category: 'physical' },
 ];
 
 export function getMoveById(id: string): Move | undefined {

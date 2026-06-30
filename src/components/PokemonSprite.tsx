@@ -20,7 +20,7 @@ export function PokemonSprite({ pokemon, side, animate }: PokemonSpriteProps) {
     <img
       src={spriteUrl}
       alt={pokemon.name}
-      className={`pokemon-sprite ${animationClass} ${side === 'player' ? 'h-28 sm:h-36 md:h-48' : 'h-20 sm:h-28 md:h-40'} transition-all`}
+      className={`pokemon-sprite ${animationClass} ${side === 'player' ? 'h-20 sm:h-28 md:h-40' : 'h-16 sm:h-24 md:h-36'} transition-all`}
       onError={(e) => {
         e.currentTarget.style.display = 'none';
         e.currentTarget.nextElementSibling?.classList.remove('hidden');

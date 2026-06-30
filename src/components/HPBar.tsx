@@ -26,7 +26,7 @@ export function HPBar({ combatant, animate = true }: HPBarProps) {
           aria-label={`HP: ${hpText}`}
         />
       </div>
-      <div className="flex justify-end text-[9px] text-gray-600 font-mono">
+      <div className="flex justify-end text-[11px] sm:text-xs text-gray-600 font-mono">
         {hpText}
       </div>
     </div>

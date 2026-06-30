@@ -33,11 +33,11 @@
     font-family: 'Nunito', system-ui, sans-serif;
     background: #000;
     color: #e2e8f0;
-    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   #root {
-    min-height: 100vh;
+    min-height: 0;
     display: flex;
     flex-direction: column;
   }
@@ -267,6 +267,102 @@
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  /* ── Pokébola Image ────────────────────────────────────── */
+  .pokeball-img {
+    image-rendering: auto;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    transition: transform 0.2s ease-out;
+  }
+
+  .pokeball-img:hover {
+    transform: scale(1.1);
+  }
+
+  /* Pokébola bounce on pokeball-select screen */
+  .pokeball-bounce {
+    animation: pokeballBounce 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pokeballBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  /* ── Modal ─────────────────────────────────────────────── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  .modal-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 182, 193, 0.4);
+    border-radius: 28px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 117, 143, 0.2);
+    max-width: 380px;
+    width: 90%;
+    overflow: hidden;
+    animation: modalSlideIn 0.3s ease-out;
+  }
+
+  .modal-card-open {
+    animation: modalExpand 0.3s ease-out;
+  }
+
+  @keyframes modalSlideIn {
+    from { opacity: 0; transform: scale(0.9) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  @keyframes modalExpand {
+    from { opacity: 0.8; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* ── Pokébola Shake Animation ──────────────────────────── */
+  .pokeball-shake {
+    animation: pokeballShake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+  }
+
+  @keyframes pokeballShake {
+    0%, 100% { transform: rotate(0deg); }
+    15% { transform: rotate(12deg); }
+    30% { transform: rotate(-10deg); }
+    45% { transform: rotate(8deg); }
+    60% { transform: rotate(-6deg); }
+    75% { transform: rotate(4deg); }
+    90% { transform: rotate(-2deg); }
+  }
+
+  /* Pokébola flash when opening */
+  .pokeball-flash {
+    animation: pokeballFlash 0.6s ease-out;
+  }
+
+  @keyframes pokeballFlash {
+    0% { opacity: 1; transform: scale(1); }
+    40% { opacity: 0.3; transform: scale(1.15); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  /* ── Modal Reveal Content ──────────────────────────────── */
+  .modal-reveal {
+    animation: modalReveal 0.5s ease-out;
+  }
+
+  @keyframes modalReveal {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
 }
 
 @utility text-shadow {
@@ -277,7 +373,139 @@
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
+/* ── Gengar Launch Animation (curved arc) ──────────────────── */
+.gengar-launch {
+  animation: gengarArc 1.0s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes gengarArc {
+  0% {
+    transform: translate(0, 0) scale(0.3) rotate(-15deg);
+    opacity: 0.4;
+    filter: brightness(2) drop-shadow(0 0 30px rgba(180, 100, 255, 1));
+  }
+  20% {
+    transform: translate(40px, -60px) scale(0.7) rotate(-5deg);
+    opacity: 1;
+    filter: brightness(1.5) drop-shadow(0 0 25px rgba(180, 100, 255, 0.9));
+  }
+  50% {
+    transform: translate(120px, -100px) scale(1.05) rotate(5deg);
+    opacity: 1;
+    filter: brightness(1.2) drop-shadow(0 0 20px rgba(180, 100, 255, 0.7));
+  }
+  75% {
+    transform: translate(200px, -40px) scale(1.0) rotate(3deg);
+    opacity: 1;
+    filter: brightness(1.1) drop-shadow(0 0 15px rgba(180, 100, 255, 0.6));
+  }
+  100% {
+    transform: translate(280px, 0) scale(1) rotate(0deg);
+    opacity: 1;
+    filter: brightness(1) drop-shadow(0 0 20px rgba(180, 100, 255, 0.6));
+  }
+}
+
+/* Mobile Gengar arc - shorter distance */
+@media (max-width: 639px) {
+  .gengar-launch {
+    animation-name: gengarArcMobile;
+  }
+}
+
+@keyframes gengarArcMobile {
+  0% {
+    transform: translate(0, 0) scale(0.3) rotate(-15deg);
+    opacity: 0.4;
+    filter: brightness(2) drop-shadow(0 0 30px rgba(180, 100, 255, 1));
+  }
+  20% {
+    transform: translate(25px, -40px) scale(0.7) rotate(-5deg);
+    opacity: 1;
+    filter: brightness(1.5) drop-shadow(0 0 25px rgba(180, 100, 255, 0.9));
+  }
+  50% {
+    transform: translate(70px, -65px) scale(1.05) rotate(5deg);
+    opacity: 1;
+    filter: brightness(1.2) drop-shadow(0 0 20px rgba(180, 100, 255, 0.7));
+  }
+  75% {
+    transform: translate(120px, -25px) scale(1.0) rotate(3deg);
+    opacity: 1;
+    filter: brightness(1.1) drop-shadow(0 0 15px rgba(180, 100, 255, 0.6));
+  }
+  100% {
+    transform: translate(170px, 0) scale(1) rotate(0deg);
+    opacity: 1;
+    filter: brightness(1) drop-shadow(0 0 20px rgba(180, 100, 255, 0.6));
+  }
+}
+
+/* Gengar landing bounce */
+.gengar-landed {
+  animation: gengarLand 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes gengarLand {
+  0% { transform: translateY(-30px) scale(1.1); opacity: 0.5; }
+  50% { transform: translateY(5px) scale(0.95); opacity: 1; }
+  70% { transform: translateY(-3px) scale(1.02); }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Flash burst when pokeball opens */
+.gengar-burst {
+  background: radial-gradient(circle, rgba(180, 100, 255, 0.9) 0%, rgba(180, 100, 255, 0.4) 40%, transparent 70%);
+  border-radius: 50%;
+  animation: burstExpand 0.5s ease-out forwards;
+}
+
+@keyframes burstExpand {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+  50% { transform: translate(-50%, -50%) scale(2.5); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
+}
+
 /* ── Responsive ─────────────────────────────────────────── */
+
+/* Mobile (< 640px) */
+@media (max-width: 639px) {
+  .gameboy-border {
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .gameboy-screen {
+    border-radius: 14px;
+  }
+
+  .arena-container {
+    height: 42vh;
+    min-height: 180px;
+    flex: none;
+  }
+
+  .move-button {
+    padding: 8px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+  }
+
+  .btn-pixel,
+  .btn-pixel-blue {
+    padding: 10px 20px;
+    font-size: 0.75rem;
+  }
+
+  .hp-bar-bg {
+    height: 7px !important;
+  }
+
+  .type-badge {
+    font-size: 0.6rem;
+    padding: 1px 7px;
+  }
+}
 
 /* Tablet (640px+) */
 @media (min-width: 640px) {
@@ -294,39 +522,6 @@
   .btn-pixel-blue {
     padding: 10px 24px;
     font-size: 0.8rem;
-  }
-}
-
-/* Mobile (< 640px) */
-@media (max-width: 639px) {
-  .gameboy-border {
-    padding: 14px;
-    border-radius: 20px;
-  }
-
-  .gameboy-screen {
-    border-radius: 14px;
-  }
-
-  .move-button {
-    padding: 8px 10px;
-    border-radius: 12px;
-    font-size: 0.8rem;
-  }
-
-  .btn-pixel,
-  .btn-pixel-blue {
-    padding: 10px 20px;
-    font-size: 0.75rem;
-  }
-
-  .hp-bar-bg {
-    height: 6px !important;
-  }
-
-  .type-badge {
-    font-size: 0.55rem;
-    padding: 1px 7px;
   }
 }
 

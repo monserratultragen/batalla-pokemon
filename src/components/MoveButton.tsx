@@ -19,13 +19,13 @@ export function MoveButton({ move, onClick, disabled = false }: MoveButtonProps)
       className={`move-button w-full text-left ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
       style={{ borderLeft: `4px solid ${typeColor}` }}
     >
-      <div className="flex justify-between items-center">
-        <span className="font-bold">{move.name}</span>
-        <span className="type-badge text-xs" style={{ backgroundColor: typeColor }}>
+      <div className="flex justify-between items-center gap-1">
+        <span className="font-bold text-[11px] sm:text-sm truncate">{move.name}</span>
+        <span className="type-badge text-[9px] sm:text-xs shrink-0" style={{ backgroundColor: typeColor }}>
           {move.type}
         </span>
       </div>
-      <div className="flex justify-between text-xs text-gray-600 mt-1">
+      <div className="flex justify-between text-[10px] sm:text-xs text-gray-600 mt-0.5 sm:mt-1">
         <span>POD: {powerText}</span>
         <span>PRE: {accuracyText}</span>
         <span>PP: {move.pp}/{move.maxPP}</span>

@@ -11,12 +11,15 @@ export interface Move {
   effectChance?: number;
 }
 
+export type PokemonTier = 'basic' | 'mid' | 'strong';
+
 export interface Pokemon {
   id: string;
   name: string;
   sprite: string;
   backSprite: string;
   types: string[];
+  tier: PokemonTier;
   baseStats: {
     hp: number;
     attack: number;

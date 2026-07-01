@@ -8,6 +8,7 @@ import { MoveButton } from './components/MoveButton';
 import { PokemonSprite } from './components/PokemonSprite';
 import { TypeBadge } from './components/TypeBadge';
 import { StatPreview } from './components/StatPreview';
+import { CityExplorer } from './ciudad';
 
 // Import assets
 import entrenadoraFace from './assets/entrenadora-face.png';
@@ -366,7 +367,7 @@ function PreludeScreen({ playerPokemon: _playerPokemon, onFinish }: { playerPoke
   );
 }
 
-function BattleScreen({ playerPokemon, onFinish }: { playerPokemon: Pokemon; onFinish: () => void }) {
+function BattleScreen({ playerPokemon, onFinish, onGoToCity }: { playerPokemon: Pokemon; onFinish: () => void; onGoToCity?: () => void }) {
   const {
     player, enemy, phase, winner, currentEvent,
     playerAnimation, enemyAnimation,
@@ -488,6 +489,11 @@ function BattleScreen({ playerPokemon, onFinish }: { playerPokemon: Pokemon; onF
               )}
               <div className="flex gap-2 sm:gap-3 mt-3 sm:mt-4">
                 <button onClick={() => resetBattle(playerPokemon)} className="btn-pixel-blue text-xs sm:text-sm">Reintentar</button>
+                {onGoToCity && (
+                  <button onClick={onGoToCity} className="btn-pixel text-xs sm:text-sm" style={{ background: 'linear-gradient(135deg, #06d6a0 0%, #2ec4b6 100%)' }}>
+                    Explorar Ciudad
+                  </button>
+                )}
                 <button onClick={onFinish} className="btn-pixel text-xs sm:text-sm">Volver</button>
               </div>
             </div>
@@ -537,7 +543,7 @@ function BattleScreen({ playerPokemon, onFinish }: { playerPokemon: Pokemon; onF
 }
 
 function App() {
-  const [view, setView] = useState<'intro' | 'selection' | 'pokeball-select' | 'prelude' | 'battle'>('intro');
+  const [view, setView] = useState<'intro' | 'selection' | 'pokeball-select' | 'prelude' | 'battle' | 'city'>('intro');
   const [playerPokemon, setPlayerPokemon] = useState<Pokemon | null>(null);
   const [selectedBelt, setSelectedBelt] = useState<Pokebelt | null>(null);
 
@@ -601,6 +607,18 @@ function App() {
     setView('intro');
   };
 
+  const handleGoToCity = () => {
+    startTransition('black', () => {
+      setView('city');
+    });
+  };
+
+  const handleBackFromCity = () => {
+    startTransition('black', () => {
+      setView('intro');
+    });
+  };
+
   return (
     <div className="relative overflow-hidden w-full min-h-screen">
       {/* Screen transition overlay */}
@@ -621,7 +639,8 @@ function App() {
         />
       )}
       {view === 'prelude' && playerPokemon && <PreludeScreen playerPokemon={playerPokemon} onFinish={handleFinishPrelude} />}
-      {view === 'battle' && playerPokemon && <BattleScreen playerPokemon={playerPokemon} onFinish={handleFinishBattle} />}
+      {view === 'battle' && playerPokemon && <BattleScreen playerPokemon={playerPokemon} onFinish={handleFinishBattle} onGoToCity={handleGoToCity} />}
+      {view === 'city' && <CityExplorer onBack={handleBackFromCity} />}
     </div>
   );
 }

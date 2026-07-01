@@ -543,3 +543,95 @@
     font-size: 0.7rem;
   }
 }
+
+/* ── City Module Styles ───────────────────────────────────── */
+.city-map {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.city-map canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.player-character {
+  image-rendering: pixelated;
+  transition: left 0.15s ease-out, top 0.15s ease-out;
+}
+
+.npc-character {
+  image-rendering: pixelated;
+}
+
+.interior-map {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Door transition animation */
+.door-transition {
+  animation: doorTransition 0.3s ease-in-out;
+}
+
+@keyframes doorTransition {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* NPC name tag */
+.npc-name-tag {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 6px;
+  font-weight: bold;
+  color: #333;
+  white-space: nowrap;
+  background: rgba(255,255,255,0.8);
+  padding: 1px 3px;
+  border-radius: 3px;
+}
+
+/* Dialog box animation */
+.dialog-box-enter {
+  animation: dialogSlideIn 0.2s ease-out;
+}
+
+@keyframes dialogSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Pokeball item bounce */
+.pokeball-bounce {
+  animation: pokeballBounce 1s ease-in-out infinite;
+}
+
+@keyframes pokeballBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* Map tile hover effect */
+.map-tile:hover {
+  filter: brightness(1.1);
+}
+
+/* Interactive object glow */
+.interactive-glow {
+  animation: interactiveGlow 2s ease-in-out infinite;
+}
+
+@keyframes interactiveGlow {
+  0%, 100% { box-shadow: 0 0 5px rgba(255, 117, 143, 0.3); }
+  50% { box-shadow: 0 0 15px rgba(255, 117, 143, 0.6); }
+}
